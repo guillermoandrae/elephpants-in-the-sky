@@ -42,9 +42,9 @@ final class Response
      */
     private function getBody(): array
     {
-        $body = [];
+        $body = ['data' => []];
         foreach ($this->objects as $object) {
-            $body[] = [
+            $body['data'][] = [
                 'color' => explode('/', explode('-', $object['Key'])[0])[1],
                 'url' => sprintf('%s/%s', 'https://s3.amazonaws.com/elephpants-in-the-sky', $object['Key']),
             ];
