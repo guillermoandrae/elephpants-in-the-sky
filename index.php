@@ -2,6 +2,7 @@
 
 use Aws\Sdk;
 use App\Elephpants;
+use function GuzzleHttp\json_encode;
 
 require __DIR__.'/vendor/autoload.php';
 
@@ -12,5 +13,13 @@ lambda(function (array $event) {
     ]);
     $elephpants = new Elephpants($sdk);
     $item = $elephpants->random();
-    return sprintf('{"url": "%s/%s"}', "https://s3.amazonaws.com/elephpants-in-the-sky", $item['Key']);
+    $response = [
+        'statusCode' => 200,
+        'headers' => [],
+        'body' => [
+            'url' => sprintf('%s/%s', 'https://s3.amazonaws.com/elephpants-in-the-sky', $item['Key'])
+        ],
+        'isBase64Encoded' => false
+    ];
+    return json_encode($response);
 });
