@@ -1,7 +1,16 @@
 <?php declare(strict_types=1);
 
+use Aws\Sdk;
+use App\Elephpants;
+
 require __DIR__.'/vendor/autoload.php';
 
 lambda(function (array $event) {
-    return 'Hello ' . ($event['name'] ?? 'world');
+    $sdk = new Sdk([
+        'region' => 'us-east-1',
+        'version' => 'latest',
+    ]);
+    $elephpants = new Elephpants($sdk);
+    $item = $elephpants->random();
+    return sprintf('<img src="%s">', $item['Key']);
 });
