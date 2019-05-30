@@ -14,12 +14,14 @@ lambda(function (array $event) {
     $elephpants = new Elephpants($sdk);
     $item = $elephpants->random();
     $response = [
+        'isBase64Encoded' => false,
         'statusCode' => 200,
-        'headers' => [],
-        'body' => [
-            'url' => sprintf('%s/%s', 'https://s3.amazonaws.com/elephpants-in-the-sky', $item['Key'])
+        'headers' => [
+            'Access-Control-Allow-Origin' => '*',
         ],
-        'isBase64Encoded' => false
+        'body' => [
+            'url' => sprintf('%s/%s', 'https://s3.amazonaws.com/elephpants-in-the-sky', $item['Key']),
+        ],
     ];
     return json_encode($response);
 });
