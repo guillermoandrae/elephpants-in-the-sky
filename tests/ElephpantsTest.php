@@ -12,8 +12,8 @@ final class ElephpantsTest extends TestCase
 
     public function testRandom(): void
     {
-        $item = $this->elephpants->random();
-        $this->assertArrayHasKey('Key', $item);
+        $items = $this->elephpants->random();
+        $this->assertArrayHasKey('Key', $items[0]);
     }
 
     protected function setUp(): void
