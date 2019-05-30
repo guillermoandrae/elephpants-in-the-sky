@@ -13,15 +13,14 @@ lambda(function (array $event) {
     ]);
     $elephpants = new Elephpants($sdk);
     $item = $elephpants->random();
-    $format = '{
-        "isBase64Encoded": false, 
-        "statusCode": 200,
-        "headers": {
-            "Access-Control-Allow-Origin": "*"
-        },
-        "body": {
-            "url": "https://s3.amazonaws.com/elephpants-in-the-sky/%s"
-        }
-    }';
-    return sprintf($format, $item['Key']);
+    return [
+        'isBase64Encoded' => false,
+        'statusCode' => 200,
+        'headers' => [
+            'Access-Control-Allow-Origin' => '*',
+        ],
+        'body' => [
+            'url' => sprintf('%s/%s', 'https://s3.amazonaws.com/elephpants-in-the-sky', $item['Key']),
+        ],
+    ];
 });
