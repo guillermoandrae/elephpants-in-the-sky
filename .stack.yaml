@@ -3,7 +3,7 @@ Description: ''
 Resources:
   MyFunction:
     Properties:
-      CodeUri: s3://elephpants-in-the-sky/stacks/604d0991694b44cbaafed241be3bf0e9
+      CodeUri: s3://elephpants-in-the-sky/stacks/5c8908f5170bea6dd76f3ab84f5d75a4
       Description: ''
       FunctionName: elephpants-in-the-sky
       Handler: index.php
@@ -14,4 +14,3 @@ Resources:
       Timeout: 10
     Type: AWS::Serverless::Function
 Transform: AWS::Serverless-2016-10-31
-
