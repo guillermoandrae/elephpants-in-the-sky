@@ -14,7 +14,6 @@ lambda(function (array $event) {
     $elephpants = new Elephpants($sdk);
     $item = $elephpants->random();
     return [
-        'isBase64Encoded' => false,
         'statusCode' => 200,
         'headers' => [
             'Access-Control-Allow-Origin' => '*',
