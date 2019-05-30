@@ -42,7 +42,12 @@ final class Response
      */
     private function getBody(): array
     {
-        $body = ['data' => []];
+        $body = [
+            'meta' => [
+                'source' => 'https://afieldguidetoelephpants.net',
+            ],
+            'data' => []
+        ];
         foreach ($this->objects as $object) {
             $body['data'][] = [
                 'color' => explode('/', explode('-', $object['Key'])[0])[1],
