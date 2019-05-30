@@ -32,9 +32,9 @@ final class Elephpants
     }
 
     /**
-     * Returns a random item.
+     * Returns 5 random items.
      *
-     * @return array An item.
+     * @return array The items.
      */
     public function random(): array
     {
@@ -44,7 +44,11 @@ final class Elephpants
             'Prefix' => $this->prefix,
         ]);
         $items = $result['Contents'];
-        $key = array_rand($items);
-        return $items[$key];
+        $keys = array_rand($items, 5);
+        $response = [];
+        foreach ($keys as $key) {
+            $response[] = $items[$key];
+        }
+        return $response;
     }
 }
