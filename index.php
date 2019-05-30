@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
 use Aws\Sdk;
+use App\Response;
 use App\Elephpants;
 use function GuzzleHttp\json_encode;
 
@@ -13,18 +14,6 @@ lambda(function (array $event) {
     ]);
     $elephpants = new Elephpants($sdk);
     $items = $elephpants->random();
-    $body = [];
-    foreach ($items as $item) {
-        $body[] = [
-            'color' => explode('/', explode('-', $item['Key'])[0])[1],
-            'url' => sprintf('%s/%s', 'https://s3.amazonaws.com/elephpants-in-the-sky', $item['Key']),
-        ];
-    }
-    return [
-        'statusCode' => 200,
-        'headers' => [
-            'Access-Control-Allow-Origin' => '*',
-        ],
-        'body' => json_encode($body),
-    ];
+    $response = new Response($items);
+    return $response->send();
 });
