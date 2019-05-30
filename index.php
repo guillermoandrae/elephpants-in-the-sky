@@ -15,9 +15,9 @@ lambda(function (array $event) {
     $item = $elephpants->random();
     return [
         'statusCode' => 200,
-        'body' => 'test',
-        //'body' => [
-          //  'url' => sprintf('%s/%s', 'https://s3.amazonaws.com/elephpants-in-the-sky', $item['Key']),
-        //],
+        'body' => [
+            'url' => 'test',
+            //  'url' => sprintf('%s/%s', 'https://s3.amazonaws.com/elephpants-in-the-sky', $item['Key']),
+        ],
     ];
 });
