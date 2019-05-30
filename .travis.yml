@@ -1,0 +1,22 @@
+language: generic
+dist: xenial
+before_install:
+  - phpenv global 7.2
+install:
+  - pip install --user awscli
+  - pip install --user aws-sam-cli
+script:
+  - composer install --optimize-autoloader
+  - composer test
+  - composer package
+deploy:
+  provider: script
+  script: composer deploy
+  skip_cleanup: true
+  on:
+    repo: guillermoandrae/bref-hello-world
+env:
+  global:
+  - AWS_DEFAULT_REGION=us-east-1
+  - secure: k8ZrMc2/4lHht7YtSH8MNPfUyAYZUmCeni57kDUyVn+Q2Mv+b0IaH+lwhnR7t1kayCwHuNuoz6qa/JS/NfRWP7YythHYHvRXF3gKrk8vTPz5yyUMTKQp3k/omEbmK09ytpuFei0C0vZGZzWcgS5KCBzYMYKUR5YWENvspPGd0z6masMOhS/LgtgVCeNMHgsk2I6nBsQvk+MlJgIflodrikYzHAwe3l826B+k0JWyU1sYDMfugHsZzV+3JThL4LVoMjO2zqNdBGdHSLuJBxJ3uCXQu5cJsHm6ORKEfhF7WEaqzZDQny1FdQADIgroUG1I2ojKCWsvymh3X8RfnDfm49REfWo8/JqwbyPw4JHitJaaZYrjKiN9seK3iHfk7jACr/IN+A29Ib+XOEWXpO4ngdsxnJ+EsEvI3TaVJMJmsvkKl4SKaU9AP/ciX+89j1z5etoHnJKUP4wrYUQ91F9O/pkrOhsGYKdNoXXwYF9+npSYoRqXelCjHxasnxVq7ILCrJlHU/AvmgUxxsk+oypd/oTI1nXF0hMvb0hQDp1j/ZK0VFvAb5j0pcuWUUFYEDwUcuvSYkwK+1WzaPo3GI6CyX1zZynLC+SvBmZZTjpcN6bJtLGPs9SYUXtbIkAATKB+wotQd97JA+3Gqa7fnmfKGTVSoCdWtGr8S8k6kWFMCDM=
+  - secure: nwZPPD/Geil/f0QV+i2U/k8vos8oAz2fueYwtCy/Q56Lq6PyNAJjJsgGsKYQtcjT4B6Ry9zHjc4LXd80+vPYLrKmpzReQ8ZaKoSkpZg5nnP88IvfZJrma1gW92EmgI6eRfuMue3DFoDjSfKJR42zoVkY0qkVhmAJLJtNZObAP1H6QjiXGw4Sa4Ny3/9Gfs7Wkjklig+gd+tv78ZUydHlrp1BUSEYOMa1o5HaopZbBNXbm6fSnIGBw5G/MMfO72ybrcslrel06LJmtxmoKYJwly4drjrvm4iJc2E3i2LxXTM8PmpGuVA3Br+Q/pil+vYaQptj6pPoo/vWsqy2Ur8ck/1DXkJFZnHaX4uAGqQ6fFHsdFhqpXWCIIRfye3yucOvj+hQosOTFu5mhwFcdIl6M0zuxNNat2fJQZgDCIKxzMcHcTxLA989KuDbm3Bipu7Z6uEHpbuJwwrDnkMZhXgx89M6SHGYgFbTftMX/yOgoR4VTB2b9Vm/hk5eZfkJevDXrA7/lpfh1CgPrZEwVFvX6MabNlaWWlcOymwxnAWBLC2XKiXmNqGlYr4prdwkdCZk9loG/YfpdpTYvFVBGdfe6f4NkHRbT90mEqPNNNSmBO7wEfSzonzuJZJBG7CDmqK/bv8pa3DVOY+CmUFW7zGqzr9tcfUnRWUqcn4n+AiQD/s=
