@@ -12,11 +12,18 @@ lambda(function (array $event) {
         'version' => 'latest',
     ]);
     $elephpants = new Elephpants($sdk);
-    $item = $elephpants->random();
+    $items = $elephpants->random();
+    $body = [];
+    foreach ($items as $item) {
+        $body[] = [
+            'url' => sprintf('%s/%s', 'https://s3.amazonaws.com/elephpants-in-the-sky', $item['Key']),
+        ];
+    }
     return [
         'statusCode' => 200,
-        'body' => json_encode([
-            'url' => sprintf('%s/%s', 'https://s3.amazonaws.com/elephpants-in-the-sky', $item['Key']),
-        ]),
+        'headers' => [
+            'Access-Control-Allow-Origin' => '*',
+        ],
+        'body' => json_encode($body),
     ];
 });
