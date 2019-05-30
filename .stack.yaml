@@ -3,7 +3,7 @@ Description: ''
 Resources:
   MyFunction:
     Properties:
-      CodeUri: s3://elephpants-in-the-sky/stacks/67f664536f449d7f42767b2ec092cd99
+      CodeUri: s3://elephpants-in-the-sky/stacks/90d2fef1435d87009d81db381eccda44
       Description: ''
       FunctionName: elephpants-in-the-sky
       Handler: index.php
