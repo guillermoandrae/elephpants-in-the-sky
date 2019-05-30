@@ -12,5 +12,5 @@ lambda(function (array $event) {
     ]);
     $elephpants = new Elephpants($sdk);
     $item = $elephpants->random();
-    return sprintf('{"url": "%s/%s"}', "https://s3.amazonaws.com/elephpants-in-the-sky/", $item['Key']);
+    return sprintf('{"url": "%s/%s"}', "https://s3.amazonaws.com/elephpants-in-the-sky", $item['Key']);
 });
