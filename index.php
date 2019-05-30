@@ -16,7 +16,7 @@ lambda(function (array $event) {
     $body = [];
     foreach ($items as $item) {
         $body[] = [
-            'color' => explode('-', $item['Key'])[0],
+            'color' => explode('/', explode('-', $item['Key'])[0])[1],
             'url' => sprintf('%s/%s', 'https://s3.amazonaws.com/elephpants-in-the-sky', $item['Key']),
         ];
     }
