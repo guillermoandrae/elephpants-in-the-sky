@@ -13,7 +13,7 @@ final class ElephpantsTest extends TestCase
     public function testFindAll(): void
     {
         $items = $this->elephpants->findAll();
-        $this->assertArrayHasKey('Key', $items[0]);
+        $this->assertArrayHasKey('Key', $items);
     }
 
     protected function setUp(): void
