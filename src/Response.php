@@ -20,7 +20,7 @@ final class Response
     }
 
     /**
-     * Returns the response array.
+     * Returns the response array needed for API Gateway.
      *
      * @return array The response array.
      */
