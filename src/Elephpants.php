@@ -39,10 +39,12 @@ final class Elephpants
     public function findAll(): array
     {
         $s3 = $this->sdk->createS3();
-        $result = $s3->listObjects([
+        $results = $s3->listObjects([
             'Bucket' => $this->bucket,
             'Prefix' => $this->prefix,
         ]);
-        return $result['Contents'];
+        $objects = $results['Contents'];
+        unset($objects[0]);
+        return $objects;
     }
 }
