@@ -14,6 +14,7 @@ final class ElephpantsTest extends TestCase
     {
         $items = $this->elephpants->findAll();
         $this->assertArrayHasKey('Key', $items[0]);
+        $this->assertStringContainsString('x', $items[0]['Key']);
     }
 
     protected function setUp(): void

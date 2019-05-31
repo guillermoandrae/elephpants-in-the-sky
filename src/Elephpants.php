@@ -45,7 +45,7 @@ final class Elephpants
         ]);
         $objects = [];
         foreach ($results['Contents'] as $object) {
-            if ($object['Key'] != '') {
+            if ($object['Key'] != 'photos/') {
                 $objects[] = $object;
             }
         }
