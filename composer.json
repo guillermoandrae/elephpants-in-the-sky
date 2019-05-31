@@ -28,6 +28,9 @@
 		}
 	},
 	"scripts": {
+		"invoke": [
+			"sam local invoke --no-event"
+		],
 		"test": [
 			"phpcbf --standard=PSR2 --extensions=php src tests",
             		"phpcs --standard=PSR2 --extensions=php src tests",
