@@ -12,7 +12,7 @@ final class ResponseTest extends TestCase
     public function testSend(): void
     {
         $response = $this->response->send();
-        $this->assertContains('test2', $response['body']);
+        $this->assertStringContainsString('test2', $response['body']);
     }
 
     protected function setUp(): void
