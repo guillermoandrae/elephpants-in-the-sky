@@ -10,9 +10,9 @@ final class ElephpantsTest extends TestCase
 {
     private $elephpants;
 
-    public function testRandom(): void
+    public function testFindAll(): void
     {
-        $items = $this->elephpants->random();
+        $items = $this->elephpants->findAll();
         $this->assertArrayHasKey('Key', $items[0]);
     }
 

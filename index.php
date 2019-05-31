@@ -13,7 +13,7 @@ lambda(function (array $event) {
         'version' => 'latest',
     ]);
     $elephpants = new Elephpants($sdk);
-    $items = $elephpants->random();
+    $items = $elephpants->findAll();
     $response = new Response($items);
     return $response->send();
 });

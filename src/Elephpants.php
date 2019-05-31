@@ -36,19 +36,13 @@ final class Elephpants
      *
      * @return array The items.
      */
-    public function random(): array
+    public function findAll(): array
     {
         $s3 = $this->sdk->createS3();
         $result = $s3->listObjects([
             'Bucket' => $this->bucket,
             'Prefix' => $this->prefix,
         ]);
-        $items = $result['Contents'];
-        $keys = array_rand($items, 5);
-        $response = [];
-        foreach ($keys as $key) {
-            $response[] = $items[$key];
-        }
-        return $response;
+        return $result['Contents'];
     }
 }

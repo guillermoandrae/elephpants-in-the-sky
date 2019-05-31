@@ -45,6 +45,7 @@ final class Response
         $body = [
             'meta' => [
                 'source' => 'https://afieldguidetoelephpants.net',
+                'count' => count($this->objects)
             ],
             'data' => []
         ];
