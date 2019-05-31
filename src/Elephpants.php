@@ -43,8 +43,13 @@ final class Elephpants
             'Bucket' => $this->bucket,
             'Prefix' => $this->prefix,
         ]);
-        $objects = $results['Contents'];
-        unset($objects[0]);
+        $objects = [];
+        foreach ($results['Contents'] as $object) {
+            if ($object['Key'] != '') {
+                $objects[] = $object;
+            }
+        }
+        
         return $objects;
     }
 }
