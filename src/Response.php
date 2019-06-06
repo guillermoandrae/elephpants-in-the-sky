@@ -44,7 +44,6 @@ final class Response
     {
         $body = [
             'meta' => [
-		// 'description' => 'RevolutionConf demo', 
                 'source' => 'https://afieldguidetoelephpants.net',
                 'count' => count($this->objects)
             ],
