@@ -5,10 +5,10 @@ before_install:
 install:
 - pip install --user awscli
 - pip install --user aws-sam-cli
+- npm install -g serverless
 script:
 - composer install --optimize-autoloader
 - composer test
-- composer package
 deploy:
   provider: script
   script: composer deploy

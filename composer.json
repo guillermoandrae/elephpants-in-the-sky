@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "mnapoli/bref": "^0.3.9",
+		"bref/bref": "^1.2",
         "aws/aws-sdk-php": "^3.96"
     },
 	"autoload": {
@@ -29,18 +29,15 @@
 	},
 	"scripts": {
 		"invoke": [
-			"sam local invoke --no-event"
+			"serverless invoke -f elephpants"
 		],
 		"test": [
 			"phpcbf --standard=PSR2 --extensions=php src tests",
             		"phpcs --standard=PSR2 --extensions=php src tests",
             		"phpunit --coverage-text --coverage-clover=./clover.xml"
-		],	
-		"package": [
-			"sam package --output-template-file .stack.yaml --s3-bucket elephpants-in-the-sky --s3-prefix stacks"
 		],
 		"deploy": [
-			"sam deploy --template-file .stack.yaml --capabilities CAPABILITY_IAM --stack-name elephpants-in-the-sky"
+			"serverless deploy"
 		]
 	}
 }
