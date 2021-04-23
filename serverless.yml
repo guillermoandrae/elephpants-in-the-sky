@@ -1,0 +1,23 @@
+service: app
+
+provider:
+  name: aws
+  region: us-east-1
+  runtime: provided.al2
+
+plugins:
+  - ./vendor/bref/bref
+
+functions:
+  elephpants:
+    handler: index.php
+    description: ''
+    layers:
+      - ${bref:layer.php-74}
+    name: midwest-elephpants
+    role: arn:aws:iam::373834698398:role/service-role/ElephpantsRole
+
+# Exclude files from deployment
+package:
+  exclude:
+    - 'tests/**'

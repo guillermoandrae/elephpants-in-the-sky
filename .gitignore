@@ -3,3 +3,5 @@ clover.xml
 .phpunit.result.cache
 *.swp
 .stack.yaml
+.idea/
+.serverless/
