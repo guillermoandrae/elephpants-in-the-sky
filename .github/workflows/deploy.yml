@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    name: deploy
+    name: Deploy
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -18,15 +18,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
       - uses: shivammathur/setup-php@v2
         with:
           php-version: "7.4"
       - uses: "ramsey/composer-install@v1"
         with:
           composer-options: "--prefer-dist --optimize-autoloader --no-dev"
-      - run: composer require bref/bref
-      - name: serverless deploy
+      - name: Run serverless deploy
         uses: serverless/github-action@master
         with:
           args: deploy
